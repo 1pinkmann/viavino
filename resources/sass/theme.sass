@@ -1,0 +1,269 @@
+@import 'tailwindcss/base'
+@import 'tailwindcss/components'
+
+$sections: 'intro', 'rosato', 'rosso', 'bianco'
+
+a, a:focus
+    -webkit-tap-highlight-color: transparent
+
+.header__bar--sticky
+    @apply opacity-0 invisible pointer-events-none
+    transition: background-color .3s ease, opacity .3s ease, visibility .3s ease
+    will-change: background-color, opacity, visibility
+
+.header__bar--stuck
+    @apply bg-white visible opacity-100 pointer-events-auto
+
+.dialog
+    @apply top-0 w-full h-full fixed bg-white pointer-events-none
+    right: -100%
+    transition: right .3s ease
+    will-change: right
+
+.page--dialog
+    @apply overflow-hidden
+
+.page--dialog .dialog
+    @apply pointer-events-auto
+    right: 0
+
+.page
+    @apply font-body antialiased
+    color: #544545
+
+.container
+    @apply px-6
+    max-width: 960px
+
+.logo__v
+    @apply fill-rosato
+    transition: fill .5s ease
+    will-change: fill
+
+.page--rosso .logo__v
+    @apply fill-rosso
+
+.page--bianco .logo__v
+    @apply fill-bianco
+
+.hamburger
+    @apply relative
+    width: 36px
+    height: 36px
+    left: -9px
+
+.hamburger__bar
+    @apply relative
+    @apply bg-black
+    @apply rounded-full
+    width: 18px
+    height: 2px
+    transition: transform .3s ease, width .3s ease, opacity .3s ease
+    will-change: transform, width, opacity
+
+    &:first-child
+        transform: translateY(-4px)
+
+    &:last-child
+        transform: translateY(4px) translateX(2px)
+        width: 14px
+
+.page--dialog .hamburger__bar
+    @apply opacity-0
+
+    &:first-child
+        @apply opacity-100
+        transform: rotate(45deg) translateX(1px) translateY(2px)
+
+    &:last-child
+        @apply opacity-100
+        width: 18px
+        transform: rotate(-45deg) translateX(1px) translateY(-2px)
+
+.background
+    background-color: #F9EEE2
+    left: 0
+
+.intro__decor--1
+    background: url(../img/hero.png) no-repeat bottom center
+    
+.intro__heading
+    font-size: 40px
+    line-height: 40px
+
+.intro__links span,
+.footer__links span,
+.dialog__links span 
+    font-size: .625rem
+
+.wine__can img
+    max-width: 216px
+    max-height: 428px
+    right: -50px
+
+.wine--rosato
+    background: linear-gradient(360deg, #FFFFFF 0%, #FAEDED 100%)
+
+.wine--rosso
+    background: linear-gradient(360deg, #FFFFFF 0%, #FAEDF2 100%)
+
+.wine--bianco
+    background: linear-gradient(360deg, #FFFFFF 0%, #FAF4ED 100%)
+
+.wine__type
+    font-size: 18px
+    letter-spacing: 4px
+
+.wine__name
+    font-size: 32px
+    line-height: 32px
+
+.wine__description
+    font-size: 16px
+    line-height: 24px
+
+.wine__features
+    font-size: 14px
+    line-height: 24px
+
+.wine--rosato .wine__decor--1 img
+    max-width: 136px
+    max-height: 243px
+    bottom: -30px
+
+.wine--rosso .wine__decor--1 img
+    max-width: 97px
+    max-height: 227px
+    left: -15px
+    bottom: -30px
+
+.wine--bianco .wine__decor--1 img
+    max-width: 163px
+    max-height: 156px
+    left: -20px
+    bottom: -15px
+
+.wine__decor--2 svg
+    top: -30px
+    right: 10px
+    
+@screen lg
+    .container
+        @apply px-10
+
+    .intro__heading
+        font-size: 72px
+        line-height: 72px
+
+    .intro, .intro__decor, .intro__logo, .intro__heading, .intro__text,
+    .wine, .wine__can, .wine__decor, .wine__type, .wine__name, .wine__description, .wine__features
+        @apply invisible opacity-0
+
+    .wine
+        background: none
+
+    .wine__can img
+        max-width: 371px
+        max-height: 734px
+        right: -105px
+        bottom: -5px
+
+    .wine--rosato .wine__decor--1 img
+        max-width: 213px
+        max-height: 379px
+        top: -60px
+        left: -40px
+
+    .wine--rosso .wine__decor--1 img
+        max-width: 151px
+        max-height: 355px
+        top: -95px
+        left: -35px
+
+    .wine--bianco .wine__decor--1 img
+        max-width: 255px
+        max-height: 243px
+        top: -20px
+        left: -25px
+
+    .wine__decor--2 svg
+        top: unset
+        right: unset
+
+    .wine__type
+        font-size: 20px
+
+    .wine__name
+        font-size: 72px
+        line-height: 72px
+
+    .wine__description
+        font-size: 18px
+        line-height: 32px
+
+    .wine__features
+        font-size: 18px
+
+    .background
+        transition: background-color .5s ease, left .5s ease
+        will-change: background-color, left
+        transform: translate3d(0, 0, 0)
+
+    .page--rosato .background
+        background-color: #FAEDED
+
+    .page--rosso .background
+        background-color: #FAEDF2
+
+    .page--bianco .background
+        background-color: #FAF4ED
+
+    .page--rosato, .page--rosso, .page--bianco
+        .background
+            left: calc(50% + 310px)
+
+    .bullet
+        @apply py-1 opacity-25
+        transition: opacity .5s ease
+        will-change: opacity
+
+        .bullet__circle
+            transition: fill .5s ease, transform .5s ease
+            will-change: fill, transform
+            transform-origin: center
+            transform: scale(1)
+
+        .bullet__outline
+            @apply opacity-0
+            transition: opacity .5s ease, transform .5s ease
+            will-change: opacity, transform
+            transform-origin: center
+            transform: scale(.5)
+
+        &:hover
+            @apply opacity-50
+
+            .bullet__circle
+                transform: scale(1.4)
+
+    @each $section in $sections
+        .page--#{$section} .bullet .bullet__circle
+            @apply fill-#{$section}
+
+        .bullet[data-gsap-target-id="#{$section}"] .bullet__outline
+            @apply stroke-#{$section}
+
+    .page--intro .bullet[data-gsap-target-id="intro"],
+    .page--rosato .bullet[data-gsap-target-id="rosato"],
+    .page--rosso .bullet[data-gsap-target-id="rosso"],
+    .page--bianco .bullet[data-gsap-target-id="bianco"]
+        @apply opacity-100
+
+        .bullet__circle
+            transform: scale(2)
+
+        .bullet__outline
+            opacity: .3
+            transform: scale(1)
+
+@import 'tailwindcss/utilities'
